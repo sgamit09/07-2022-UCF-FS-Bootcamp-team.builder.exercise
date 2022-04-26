@@ -6,99 +6,96 @@ let fileName = './dist/index.html';
 const startUp = ([
     {
         type: 'list',
-        name: 'class',
-        message: 'Choose Your List of Classes:  ',
-        choices: ['Fighter', 'Mage', 'Hunter',],
+        name: 'roles',
+        message: 'Team Member Role:  ',
+        choices: ['Manager', 'Engineer', 'Intern',],
     }
 ]);
 
-const fighterTraits = ([
+const managerInfo = ([
     {
         type: 'input',
+        message: 'What is the name of the team Manager?',
         name: 'name',
-        message: 'Insert Fighter Name: ',
     },
     {
         type: 'input',
-        name: 'HP',
-        message: 'Set HP points |min 1. pt max 9 pt.|: ',
+        message: 'What is the employee ID of the Manager?',
+        name: 'id',
     },
     {
         type: 'input',
-        name: 'STR',
-        message: 'Set STR points |min 1. pt max 9 pt.|: ',
+        message: 'What is the email address of the Manager?',
+        name: 'email',
     },
     {
-        type: 'list',
-        name: 'weapon',
-        message: ' Select Weapon: ',
-        choices: ['Shield', 'Sword', 'Gauntlets',],
+        type: 'input',
+        message: 'What is the office number of the Manager?',
+        name: 'office',
     },
     {
         type: 'list',
         name: 'next',
-        message: ' Create teammate class: ',
-        choices: ['Fighter', 'Mage', 'Hunter', 'Exit'],
+        message: ' Add Team Members: ',
+        choices: ['Manager', 'Engineer', 'Intern', 'Exit'],
     },
 ]);
 
-const mageTraits = ([
+const engineerInfo = ([
     {
         type: 'input',
+        message: 'What is the name of the Engineer?',
         name: 'name',
-        message: 'Insert Mage Name: ',
     },
     {
         type: 'input',
-        name: 'HP',
-        message: 'Set HP points |min 1. pt max 9 pt.|: ',
+        message: 'What is the employee ID of the Engineer?',
+        name: 'id',
     },
     {
         type: 'input',
-        name: 'MAG',
-        message: 'Set MAG points |min 1. pt max 9 pt.|: ',
+        message: 'What is the email address of the Engineer?',
+        name: 'email',
     },
     {
-        type: 'list',
-        name: 'weapon',
-        message: ' Select Weapon: ',
-        choices: ['Shield', 'Staff', 'Gauntlets',],
+        type: 'input',
+        message: 'What is the GitHub username of the Engineer?',
+        name: 'gitHub',
     },
     {
         type: 'list',
         name: 'next',
-        message: ' Create teammate class: ',
-        choices: ['Fighter', 'Mage', 'Hunter', 'Exit'],
+        message: ' Add Team Members: ',
+        choices: ['Manager', 'Engineer', 'Intern', 'Exit'],
     },
 ]);
 
-const hunterTraits = ([
+const internInfo = ([
     {
         type: 'input',
+        message: 'What is the name of the Intern?',
         name: 'name',
-        message: 'Insert Hunter Name: ',
-    },
-    {
+      },
+      {
         type: 'input',
-        name: 'HP',
-        message: 'Set HP points |min 1. pt max 9 pt.|: ',
-    },
-    {
+        message: 'What is the employee ID of the Intern?',
+        name: 'id',
+      },
+      {
         type: 'input',
-        name: 'DEX',
-        message: 'Set DEX points |min 1. pt max 9 pt.|: ',
-    },
-    {
-        type: 'list',
-        name: 'weapon',
-        message: ' Select Weapon: ',
-        choices: ['Shield', 'Bow', 'Daggers',],
-    },
-    {
+        message: 'What is the email address of the Intern?',
+        name: 'email',
+      },
+      {
+        type: 'input',
+        message: 'What is the school of the Intern?',
+        name: 'school',
+      },
+      {
         type: 'list',
         name: 'next',
-        message: ' Create teammate class: ',
-        choices: ['Fighter', 'Mage', 'Hunter', 'Exit'],
+        message: ' Add Team Members: ',
+        choices: ['Manager', 'Engineer', 'Intern', 'Exit'],
     },
 ]);
 
@@ -162,122 +159,121 @@ function appendingDoom(fileName, data) {
     });
 }
 
-addFighter = () => {
-    console.log("Fighter class activate!");
+addManager = () => {
+    console.log("Manager Role activate!");
     inquirer
-        .prompt(fighterTraits)
+        .prompt(managerInfo)
         .then(answers => {
-            const { name: charName, HP: charHP, STR: charSTR, weapon: charWeapon, next: nextChar, } = answers;
+            const { name: manName, id: manID, email: manEmail, office: manOffice, next: nextRole, } = answers;
 
-            if (nextChar === 'Fighter') {
-                addFighter();
-            } else if (nextChar === 'Mage') {
-                addMage();
-            } else if (nextChar === 'Hunter') {
-                addHunter();
+            if (nextRole === 'Manager') {
+                addManager();
+            } else if (nextRole === 'Engineer') {
+                addEngineer();
+            } else if (nextRole === 'Intern') {
+                addIntern();
             } else {
                 generateTeamFoot(fileName);
             }
 
-            let fighterCard =
-         `<div class="card employee-card">
+            let managerCard =
+                `<div class="card employee-card">
             <div class="card-header">
-                <h2 class="card-title">${charName}</h2>
-                <h3 class="card-title"><i class="fa-solid fa-hand-fist"></i> Class: Fighter </h3>
+                <h2 class="card-title">${manName}</h2>
+                <h3 class="card-title"><i class="fa-solid fa-bullhorn"></i> Manager </h3>
             </div>
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item">💚 HP: ${charHP}</li>
-                    <li class="list-group-item">⚔️ STR: ${charSTR}</li>
-                    <li class="list-group-item">Weapon: ${charWeapon}</li>
+                    <li class="list-group-item">🆔 ID: ${manID}</li>
+                    <li class="list-group-item">📧 Email: ${manEmail}</li>
+                    <li class="list-group-item">🚪 Office #: ${manOffice}</li>
                 </ul>
             </div>
           </div>`;
 
-            appendingDoom(fileName, fighterCard);
+            appendingDoom(fileName, managerCard);
         });
 }
 
-addMage = () => {
-    console.log("Mage class activate!");
+addEngineer = () => {
+    console.log("Engineer role activate!");
     inquirer
-        .prompt(mageTraits)
+        .prompt(engineerInfo)
         .then(answers => {
-            const { name: charName, HP: charHP, MAG: charMAG, weapon: charWeapon, next: nextChar, } = answers;
-            if (nextChar === 'Fighter') {
-                addFighter();
-            } else if (nextChar === 'Mage') {
-                addMage();
-            } else if (nextChar === 'Hunter') {
-                addHunter();
+            const { name: engName, id: engID, email: engEmail, gitHub: engGitHub, next: nextRole, } = answers;
+            if (nextRole === 'Manager') {
+                addManager();
+            } else if (nextRole === 'Engineer') {
+                addEngineer();
+            } else if (nextRole === 'Intern') {
+                addIntern();
             } else {
                 generateTeamFoot(fileName);
             }
-            let mageCard =
-         `<div class="card employee-card">
+            let engineerCard =
+                `<div class="card employee-card">
             <div class="card-header">
-                <h2 class="card-title">${charName}</h2>
-                <h3 class="card-title"><i class="fa-solid fa-hat-wizard"></i> Class: Mage</h3>
+                <h2 class="card-title">${engName}</h2>
+                <h3 class="card-title"><i class="fa-solid fa-calculator"></i> Engineer </h3>
             </div>
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item">💚 HP: ${charHP}</li>
-                    <li class="list-group-item">✨ MAG: ${charMAG}</li>
-                    <li class="list-group-item">Weapon: ${charWeapon}</li>
+                    <li class="list-group-item">🆔 ID: ${engID}</li>
+                    <li class="list-group-item">📧 email: ${engEmail}</li>
+                    <li class="list-group-item">💻 GitHub: ${engGitHub}</li>
                 </ul>
             </div>
           </div>`
 
-            appendingDoom(fileName, mageCard);
+            appendingDoom(fileName, engineerCard);
         });
 }
 
-addHunter = () => {
-    console.log("Hunter class activate!");
+addIntern = () => {
+    console.log("Intern Role activate!");
     inquirer
-        .prompt(hunterTraits)
+        .prompt(internInfo)
         .then(answers => {
-            const { name: charName, HP: charHP, DEX: charDEX, weapon: charWeapon, next: nextChar, } = answers;
-
-            if (nextChar === 'Fighter') {
-                addFighter();
-            } else if (nextChar === 'Mage') {
-                addMage();
-            } else if (nextChar === 'Hunter') {
-                addHunter();
+            const { name: intName, id: intID, email: intEmail, school: intSchool, next: nextRole, } = answers;
+            if (nextRole === 'Manager') {
+                addManager();
+            } else if (nextRole === 'Engineer') {
+                addEngineer();
+            } else if (nextRole === 'Intern') {
+                addIntern();
             } else {
                 generateTeamFoot(fileName);
             }
-            let hunterCard =
-        `<div class="card employee-card">
+            let internCard =
+                `<div class="card employee-card">
             <div class="card-header">
-                <h2 class="card-title">${charName}</h2>
-                <h3 class="card-title"><i class="fa-solid fa-bullseye"></i> Class: Hunter</h3>
+                <h2 class="card-title">${intName}</h2>
+                <h3 class="card-title"><i class="fa-solid fa-eraser"></i> Intern </h3>
             </div>
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item">💚 HP: ${charHP}</li>
-                    <li class="list-group-item">🏹 DEX: ${charDEX}</li>
-                    <li class="list-group-item">Weapon: ${charWeapon}</li>
+                    <li class="list-group-item">🆔 ID: ${intID}</li>
+                    <li class="list-group-item">📧 email: ${intEmail}</li>
+                    <li class="list-group-item">🏫 School: ${intSchool}</li>
             </div>
         </div>`
-            appendingDoom(fileName, hunterCard);
+            appendingDoom(fileName, internCard);
         })
 }
 function init() {
     inquirer
         .prompt(startUp)
         .then(answers => {
-            const { class: charClass } = answers;
-            if (charClass === 'Fighter') {
+            const { roles: empRole } = answers;
+            if (empRole === 'Manager') {
                 generateTeamHead(fileName);
-                addFighter();
-            } else if (charClass === 'Mage') {
+                addManager();
+            } else if (empRole === 'Engineer') {
                 generateTeamHead(fileName);
-                addMage();
-            } else if (charClass === 'Hunter') {
+                addEngineer();
+            } else if (empRole === 'Intern') {
                 generateTeamHead(fileName);
-                addHunter();
+                addIntern();
             }
         })
 }
