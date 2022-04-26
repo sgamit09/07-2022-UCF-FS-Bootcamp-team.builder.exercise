@@ -32,10 +32,10 @@ The program uses the integrated terminal on VS Code to give the user prompts/que
 The program then takes the answers and inputs them into template literal cards of HTML. Lastly, the cards of HTML are written into a "index.html"
 using fs.AppendFile() generating the team page. 
 
-![image](https://avatarfiles.alphacoders.com/893/thumb-89303.gif)
+![image](https://user-images.githubusercontent.com/98362675/165347204-afa98efc-a9c1-4d80-88b0-6a8c07dc1ff7.png)
 
 
-Video Walkthrough = https://drive.google.com/file/d/1OLQxPdKpy3_-ZuaBSZz9-FwGsjDdrC7o/view?usp=sharing
+Video Walkthrough = https://drive.google.com/file/d/1kNqdQsHjtaJkG2tXHS-1ds2lonxH-vnr/view
 
 # License
 
