@@ -1,0 +1,22 @@
+.card-header {
+    background-color: royalblue;
+    color: white;
+  }
+  
+  .employee-card {
+    margin: 5px;
+    /* width: 30%; */
+    box-shadow: darkslategray 4px 4px 2px 1px;
+  }
+  
+  .jumbotron {
+    background-color: darkblue;
+    color: white;
+  }
+  
+  
+  @media only screen and (max-width: 600px) {
+    .employee-card {
+      width: 100%;
+    }
+  }
